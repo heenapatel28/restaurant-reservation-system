@@ -11,6 +11,7 @@ export default function ReservationForm({ reservation_id }) {
         reservation_date: "",
         reservation_time: "",
         people: "",
+		comment: "",
     }
 
     const [form, setForm] = useState({...initialFormState});
@@ -40,7 +41,54 @@ export default function ReservationForm({ reservation_id }) {
 
         let name = target.name;
         let value = target.value;
-                        
+		
+		//check first_name and last_name to be CharacterData
+		if (name === "first_name") {
+			const nm = /^[A-Za-z]*$/
+			if (!nm.test(value)) {
+				setReservationsError(["Enter the characters value in First Name."]);
+				return
+			}
+			else {
+				setReservationsError([]);
+			}
+			if (value.length > 25) {
+				return
+			}
+		}
+		
+		//check last_name and last_name to be CharacterData
+		if (name === "last_name") {
+			const nm = /^[A-Za-z]*$/
+			if (!nm.test(value)) {
+				setReservationsError(["Enter the characters value in Last Name."]);
+				return
+			}
+			else {
+				setReservationsError([]);	
+			}
+			if (value.length > 25) {
+				return
+			}
+		}
+		
+		//check mobile_number length
+		if (name === "mobile_number") {
+			if (value.length > 11) {
+				setReservationsError(["Enter maximum of 11 numbers in mobile_number."]);
+				return
+			}
+		}
+		
+				
+		//check for Number of people 
+		if (name === "people") {
+			if (value.length > 2) {
+				setReservationsError(["Enter max of 2 digit value for people."]);
+				return
+			}
+		}
+		
         // check that reservation date is not on a Tuesday and / or not in the past
         if (name === "reservation_date") {
             const date = new Date(`${value} PDT`);
@@ -148,7 +196,7 @@ export default function ReservationForm({ reservation_id }) {
                     <label htmlFor="mobile_number">Mobile Phone Number</label>
                     <input 
                         className="form-control"
-                        type="text"
+                        type="number"
                         name="mobile_number"
                         id="mobile_number"
                         placeholder="555-555-5555"
@@ -191,6 +239,17 @@ export default function ReservationForm({ reservation_id }) {
                         onChange={handleChange}
                         required="required"
                         value={form.people}
+                    />
+                </div>
+				<div className="form-group">
+                    <label htmlFor="comment">Comment</label>
+                    <input 
+                        className="form-control"
+                        type="text"
+                        name="comment"
+                        id="comment"
+                        onChange={handleChange}
+                        value={form.comment}
                     />
                 </div>
                 <button className="btn btn-dark" type="submit">Submit</button>

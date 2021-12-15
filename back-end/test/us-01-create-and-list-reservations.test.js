@@ -61,6 +61,7 @@ describe("US-01 - Create and list reservations", () => {
         reservation_date: "2025-01-01",
         reservation_time: "13:30",
         people: 1,
+		comment: "comment",
       };
 
       const response = await request(app)
@@ -80,6 +81,7 @@ describe("US-01 - Create and list reservations", () => {
         reservation_date: "2025-01-01",
         reservation_time: "13:30",
         people: 1,
+		comment: "comment",
       };
 
       const response = await request(app)
@@ -98,6 +100,7 @@ describe("US-01 - Create and list reservations", () => {
         reservation_date: "2025-01-01",
         reservation_time: "13:30",
         people: 1,
+		comment: "comment",
       };
 
       const response = await request(app)
@@ -117,6 +120,7 @@ describe("US-01 - Create and list reservations", () => {
         reservation_date: "2025-01-01",
         reservation_time: "13:30",
         people: 1,
+		comment: "comment",
       };
 
       const response = await request(app)
@@ -154,6 +158,7 @@ describe("US-01 - Create and list reservations", () => {
         reservation_date: "2025-01-01",
         reservation_time: "13:30",
         people: 1,
+		comment: "comment",
       };
 
       const response = await request(app)
@@ -172,6 +177,7 @@ describe("US-01 - Create and list reservations", () => {
         mobile_number: "800-555-1212",
         reservation_time: "13:30",
         people: 1,
+		comment: "comment"
       };
 
       const response = await request(app)
@@ -191,6 +197,7 @@ describe("US-01 - Create and list reservations", () => {
         reservation_date: "",
         reservation_time: "13:30",
         people: 1,
+		comment: "comment",
       };
 
       const response = await request(app)
@@ -210,6 +217,7 @@ describe("US-01 - Create and list reservations", () => {
         reservation_date: "not-a-date",
         reservation_time: "13:30",
         people: 1,
+		comment: "comment",
       };
 
       const response = await request(app)
@@ -228,6 +236,7 @@ describe("US-01 - Create and list reservations", () => {
         mobile_number: "800-555-1212",
         reservation_date: "2025-01-01",
         people: 1,
+		comment: "comment",
       };
 
       const response = await request(app)
@@ -247,6 +256,7 @@ describe("US-01 - Create and list reservations", () => {
         reservation_date: "2025-01-01",
         reservation_time: "",
         people: 1,
+		comment: "comment",
       };
 
       const response = await request(app)
@@ -266,6 +276,7 @@ describe("US-01 - Create and list reservations", () => {
         reservation_date: "2025-01-01",
         reservation_time: "not-a-time",
         people: 1,
+		comment: "comment",
       };
 
       const response = await request(app)
@@ -284,6 +295,7 @@ describe("US-01 - Create and list reservations", () => {
         mobile_number: "800-555-1212",
         reservation_date: "2025-01-01",
         reservation_time: "17:30",
+		comment: "comment",
       };
 
       const response = await request(app)
@@ -303,6 +315,7 @@ describe("US-01 - Create and list reservations", () => {
         reservation_date: "2025-01-01",
         reservation_time: "17:30",
         people: 0,
+		comment: "comment",
       };
 
       const response = await request(app)
@@ -322,6 +335,7 @@ describe("US-01 - Create and list reservations", () => {
         reservation_date: "2025-01-01",
         reservation_time: "17:30",
         people: "A",
+		comment: "comment",
       };
 
       const response = await request(app)
@@ -332,7 +346,49 @@ describe("US-01 - Create and list reservations", () => {
       expect(response.body.error).toContain("people");
       expect(response.status).toBe(400);
     });
+	
+	
+	test("returns 400 if Comment is missing", async () => {
+      const data = {
+        first_name: "first",
+		last_name: "last",
+        mobile_number: "800-555-1212",
+        reservation_date: "2025-01-01",
+        reservation_time: "13:30",
+        people: 1,
+		
+      };
 
+      const response = await request(app)
+        .post("/reservations")
+        .set("Accept", "application/json")
+        .send({ data });
+
+      expect(response.body.error).toContain("comment");
+      expect(response.status).toBe(400);
+    });
+
+    test("returns 400 if Comment is empty", async () => {
+      const data = {
+        first_name: "first",
+        last_name: "last",
+        mobile_number: "800-555-1212",
+        reservation_date: "2025-01-01",
+        reservation_time: "13:30",
+        people: 1,
+		comment: "",
+      };
+
+      const response = await request(app)
+        .post("/reservations")
+        .set("Accept", "application/json")
+        .send({ data });
+
+      expect(response.body.error).toContain("comment");
+      expect(response.status).toBe(400);
+    });
+
+	
     test("returns 201 if data is valid", async () => {
       const data = {
         first_name: "first",
@@ -341,6 +397,7 @@ describe("US-01 - Create and list reservations", () => {
         reservation_date: "2025-01-01",
         reservation_time: "17:30",
         people: 2,
+		comment: "comment",
       };
 
       const response = await request(app)
@@ -357,6 +414,7 @@ describe("US-01 - Create and list reservations", () => {
           reservation_date: expect.stringContaining("2025-01-01"),
           reservation_time: expect.stringContaining("17:30"),
           people: 2,
+		  comment: "comment",
         })
       );
       expect(response.status).toBe(201);

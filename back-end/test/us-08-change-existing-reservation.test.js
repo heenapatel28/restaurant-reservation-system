@@ -28,6 +28,7 @@ describe("US-08 - Change an existing reservation", () => {
         reservation_date: "2026-12-30",
         reservation_time: "18:00",
         people: 2,
+		comment: "comments",
       };
 
       const response = await request(app)
@@ -47,6 +48,7 @@ describe("US-08 - Change an existing reservation", () => {
         reservation_date: "2026-12-30",
         reservation_time: "18:00",
         people: 2,
+		comment: "comments",
       };
 
       const reservation = await knex("reservations")
@@ -82,6 +84,7 @@ describe("US-08 - Change an existing reservation", () => {
         reservation_date: "2025-01-01",
         reservation_time: "13:30",
         people: 3,
+		comment: "comment",
       };
 
       const response = await request(app)
@@ -101,6 +104,7 @@ describe("US-08 - Change an existing reservation", () => {
         reservation_date: "2025-01-01",
         reservation_time: "13:30",
         people: 3,
+		comment: "comment",
       };
 
       const response = await request(app)
@@ -119,6 +123,7 @@ describe("US-08 - Change an existing reservation", () => {
         reservation_date: "2025-01-01",
         reservation_time: "13:30",
         people: 3,
+		comment: "comment",
       };
 
       const response = await request(app)
@@ -138,6 +143,7 @@ describe("US-08 - Change an existing reservation", () => {
         reservation_date: "2025-01-01",
         reservation_time: "13:30",
         people: 3,
+		comment: "comment",
       };
 
       const response = await request(app)
@@ -156,6 +162,7 @@ describe("US-08 - Change an existing reservation", () => {
         reservation_date: "2025-01-01",
         reservation_time: "13:30",
         people: 3,
+		comment: "comment",
       };
 
       const response = await request(app)
@@ -175,6 +182,7 @@ describe("US-08 - Change an existing reservation", () => {
         reservation_date: "2025-01-01",
         reservation_time: "13:30",
         people: 3,
+		comment: "comment",
       };
 
       const response = await request(app)
@@ -193,6 +201,7 @@ describe("US-08 - Change an existing reservation", () => {
         mobile_number: "800-555-1212",
         reservation_time: "13:30",
         people: 1,
+		comment: "comment",
       };
 
       const response = await request(app)
@@ -212,6 +221,7 @@ describe("US-08 - Change an existing reservation", () => {
         reservation_date: "",
         reservation_time: "13:30",
         people: 1,
+		comment: "comment",
       };
 
       const response = await request(app)
@@ -230,6 +240,7 @@ describe("US-08 - Change an existing reservation", () => {
         reservation_date: "not-a-date",
         reservation_time: "13:30",
         people: 2,
+		comment: "comment",
       };
 
       const response = await request(app)
@@ -248,6 +259,7 @@ describe("US-08 - Change an existing reservation", () => {
         mobile_number: "800-555-1212",
         reservation_date: "2025-01-01",
         people: 2,
+		comment: "comment",
       };
 
       const response = await request(app)
@@ -266,6 +278,7 @@ describe("US-08 - Change an existing reservation", () => {
         reservation_date: "2025-01-01",
         reservation_time: "",
         people: 2,
+		comment: "comment",
       };
 
       const response = await request(app)
@@ -284,6 +297,7 @@ describe("US-08 - Change an existing reservation", () => {
         reservation_date: "2025-01-01",
         reservation_time: "not-a-time",
         people: 2,
+		comment: "comment",
       };
 
       const response = await request(app)
@@ -302,6 +316,7 @@ describe("US-08 - Change an existing reservation", () => {
         mobile_number: "800-555-1212",
         reservation_date: "2025-01-01",
         reservation_time: "17:30",
+		comment: "comment",
       };
 
       const response = await request(app)
@@ -312,6 +327,50 @@ describe("US-08 - Change an existing reservation", () => {
       expect(response.body.error).toContain("people");
       expect(response.status).toBe(400);
     });
+	
+	
+	 test("returns 400 if comment is missing", async () => {
+      const data = {
+        first_name: "first",
+		last_name:  "last"
+        mobile_number: "800-555-1212",
+        reservation_date: "2025-01-01",
+        reservation_time: "13:30",
+        people: 3,
+		
+      };
+
+      const response = await request(app)
+        .put("/reservations/1")
+        .set("Accept", "application/json")
+        .send({ data });
+
+      expect(response.body.error).toContain("comment");
+      expect(response.status).toBe(400);
+    });
+
+    test("returns 400 if comment is empty", async () => {
+      const data = {
+        first_name: "first",
+        last_name: "last",
+        mobile_number: "800-555-1212",
+        reservation_date: "2025-01-01",
+        reservation_time: "13:30",
+        people: 3,
+		comment: "",
+      };
+
+      const response = await request(app)
+        .put("/reservations/1")
+        .set("Accept", "application/json")
+        .send({ data });
+
+      expect(response.body.error).toContain("comment");
+      expect(response.status).toBe(400);
+    });
+
+	
+	
 
     test("returns 400 if people is zero", async () => {
       const data = {
@@ -321,6 +380,7 @@ describe("US-08 - Change an existing reservation", () => {
         reservation_date: "2025-01-01",
         reservation_time: "17:30",
         people: 0,
+		comment: "comment",
       };
 
       const response = await request(app)
@@ -340,6 +400,7 @@ describe("US-08 - Change an existing reservation", () => {
         reservation_date: "2025-01-01",
         reservation_time: "17:30",
         people: "A",
+		comment: "comment",
       };
 
       const response = await request(app)

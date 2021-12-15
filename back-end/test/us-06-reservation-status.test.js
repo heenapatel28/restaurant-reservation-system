@@ -28,6 +28,7 @@ describe("US-06 - Reservation status", () => {
         reservation_date: "2025-01-01",
         reservation_time: "17:30",
         people: 2,
+		comment: "comment",
         status: "booked",
       };
 
@@ -45,6 +46,7 @@ describe("US-06 - Reservation status", () => {
           reservation_date: expect.stringContaining("2025-01-01"),
           reservation_time: expect.stringContaining("17:30"),
           people: 2,
+		  comment: "comment",
         })
       );
       expect(response.status).toBe(201);
@@ -60,6 +62,7 @@ describe("US-06 - Reservation status", () => {
           reservation_date: "2025-01-01",
           reservation_time: "17:30",
           people: 2,
+		  comment: "comment",
           status,
         };
 

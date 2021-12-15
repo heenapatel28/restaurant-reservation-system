@@ -37,6 +37,7 @@ describe("US-02 - Create reservation on a future, working date - E2E", () => {
       await page.type("input[name=last_name]", "Doe");
       await page.type("input[name=mobile_number]", "1234567890");
       await page.type("input[name=people]", "3");
+	  await page.type("input[name=comment]", "abc");
     });
 
     test("displays an error message if the date of the reservation occurs in the past", async () => {

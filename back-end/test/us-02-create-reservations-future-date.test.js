@@ -28,6 +28,7 @@ describe("US-02 - Create reservations future date", () => {
         reservation_date: "1999-01-01",
         reservation_time: "17:30",
         people: 3,
+		comment: "comment",
       };
 
       const response = await request(app)
@@ -46,6 +47,7 @@ describe("US-02 - Create reservations future date", () => {
         reservation_date: "2030-01-01",
         reservation_time: "17:30",
         people: 3,
+		comment: "comment",
       };
 
       const response = await request(app)

@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { postTable } from "../utils/api";
@@ -40,6 +41,23 @@ export default function TableForm() {
                 setReservationsError([]);
             }
         }
+		
+		
+		//check for Table Capacity count
+		if (name === "capacity") {
+			if (value.length > 1) {
+				setReservationsError(["Enter max of 9 people for a table ."]);
+				return
+			}
+		}
+		
+		//check mobile_number length
+		if (name === "table_name") {
+			if (value.length > 15) {
+				return
+			}
+		}
+		
         // set the form state
         setForm({
             ...form,

@@ -10,6 +10,7 @@ const REQUIRED_PROPERTIES = [
   "reservation_date",
   "reservation_time",
   "people",
+  "comment",
 ]
 
 const VALID_PROPERTIES = [

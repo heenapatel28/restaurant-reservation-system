@@ -47,5 +47,9 @@
   },
   "keywords": [],
   "author": "Thinkful, Inc.",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "dependencies": {
+    "react-icons": "^4.3.1",
+    "restaurant-menu": "^1.0.2"
+  }
 }

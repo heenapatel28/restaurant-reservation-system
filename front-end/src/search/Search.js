@@ -18,6 +18,16 @@ export default function Search() {
     const history = useHistory();
 
     const handleChange = ({ target }) => {
+		let name = target.name;
+        let value = target.value;		
+		
+		//check mobile_number length
+		if (name === "mobile_number") {
+			if (value.length > 11) {
+				return
+			}
+		}
+		
         // set the form state
         setForm({
             ...form,
@@ -46,6 +56,8 @@ export default function Search() {
             findByPhone();
         }
     };
+	
+		
 
     return (
         <>
@@ -58,7 +70,7 @@ export default function Search() {
                     <label htmlFor="mobile_number">Mobile Number</label>
                     <input 
                         className="form-control"
-                        type="text"
+                        type="number"
                         name="mobile_number"
                         id="mobile_number"
                         placeholder="Enter a customer's phone number"

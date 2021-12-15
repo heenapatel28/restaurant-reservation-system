@@ -28,6 +28,7 @@ describe("US-03 - Create reservations eligible timeframe", () => {
         reservation_date: "2050-01-05",
         reservation_time: "09:30",
         people: 3,
+		comment: "comment"
       };
 
       let response = await request(app)

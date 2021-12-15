@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useLocation, useHistory } from "react-router-dom";
 import { updateStatus } from "../utils/api";
 
-export default function Reservation({ reservation_id, first_name, last_name, mobile_number, reservation_time, people, status }) {
+export default function Reservation({ reservation_id, first_name, last_name, mobile_number, reservation_time, people, comment, status }) {
     
     const [cancelError, setCancelError] = useState([]);
     const location = useLocation();
@@ -33,7 +33,8 @@ export default function Reservation({ reservation_id, first_name, last_name, mob
             <div className="card-body">
             <p>Reservation Time: {reservation_time}<br />
                 Party Size: {people}<br />
-                Phone Number: {mobile_number}</p>
+                Phone Number: {mobile_number}<br />
+				Comment: {comment}</p>
             <p data-reservation-id-status={reservation_id}>Status: {status}</p>
             {!location.pathname.includes("seat") && status === "booked" ? (
                 <>
