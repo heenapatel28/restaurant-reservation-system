@@ -34,7 +34,7 @@ A full-stack app built using:
 - Navigation buttons: `Previous Day`, `Today`, & `Next Day` are available for changing the date displayed by the dashboard.
 - All tables (free or occupied) are also diplayed here.
 
-![dashboard](./screenshots/dashboard.jpeg)
+![dashboard](./screenshots/dashboard.jpg)
 
 ---
 
@@ -129,6 +129,12 @@ Note: finished reservations no longer display in the dashboard.
 ![Cancellation](./screenshots/Cancellation.jpg)
 
 Note: cancelled reservations no longer display in the dashboard.
+
+---
+
+### Restaurant Menu
+
+![Menu](./screenshots/Menu.jpg)
 
 ---
 
