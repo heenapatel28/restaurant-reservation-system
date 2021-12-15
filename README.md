@@ -1,6 +1,6 @@
 # Thinkful Capstone:Beit Beirut
 
-> Live app is available here:  https://periodic-tables-frontend--as.herokuapp.com/dashboard
+
 
 A full-stack app built using:
 - HTML
