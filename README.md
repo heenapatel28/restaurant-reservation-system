@@ -43,15 +43,15 @@ A full-stack app built using:
 The menu provides options to:
 1. Search for a reservation
 
-![menuSearch](./screenshots/menuSearch.jpeg)
+![MenuSearch](./screenshots/MenuSearch.jpeg)
 
 2. Create a new reservation 
 
-![menuNewReservation](./screenshots/menuNewReservation.jpeg)
+![MenuNewReservation](./screenshots/MenuNewReservation.jpeg)
 
 3. Create a new table
 
-![menuNewTable](./screenshots/menuNewTable.jpeg)
+![MenuNewTable](./screenshots/MenuNewTable.jpeg)
 
 ---
 
@@ -60,11 +60,11 @@ The menu provides options to:
 1. Enter the phone number for the reservation.
 1. Click `find`.
 
-![search](./screenshots/search.jpeg)
+![Search](./screenshots/Search.jpg)
 
 This will display any matching results.
 
-![searched](./screenshots/searched.jpeg)
+![Searched](./screenshots/searched.jpg)
 
 ---
 
@@ -73,7 +73,7 @@ This will display any matching results.
 1. Fill out the form with the reservation information.
 1. Click `submit`.
 
-![newReservation](./screenshots/newReservation.jpeg)
+![new reservation](./screenshots/new reservation.jpg)
 
 ---
 
@@ -82,7 +82,7 @@ This will display any matching results.
 1. Fill out the form with the table information.
 1. Click `submit`.
 
-![newTable](./screenshots/newTable.jpeg)
+![NewTable](./screenshots/NewTable.jpg)
 
 ---
 
@@ -92,11 +92,11 @@ This will display any matching results.
 1. Select a table from the drop-down menu.
 1. Click `submit` to seat the reservation at the selected table.
 
-![seat](./screenshots/seat.jpeg)
+![Seat](./screenshots/Seat.jpg)
 
 Once a reservation is seated, the reservation status will change from `booked` to `seated`.
 
-![seated](./screenshots/seated.jpeg)
+![Seated](./screenshots/Seated.jpg)
 
 ---
 
@@ -105,7 +105,7 @@ Once a reservation is seated, the reservation status will change from `booked` t
 1. Click `finish` on the table that has finished.
 1. Click `OK` on the confirmation window that pops-up.
 
-![finishing](./screenshots/finishing.jpeg)
+![Finished](./screenshots/Finished.jpg)
 
 Note: finished reservations no longer display in the dashboard.
 
@@ -117,7 +117,7 @@ Note: finished reservations no longer display in the dashboard.
 1. Edit any of the reservation information as needed.
 1. Click `submit` to save the updated reservation information.
 
-![editing](./screenshots/editing.jpeg)
+![EditReservation](./screenshots/EditReservation.jpg)
 
 ---
 
@@ -126,7 +126,7 @@ Note: finished reservations no longer display in the dashboard.
 1. Click `cancel` on the reservation you'd like to cancel.
 1. Click `OK` on the confirmation window that pops-up.
 
-![cancelling](./screenshots/cancelling.jpeg)
+![Cancellation](./screenshots/Cancellation.jpg)
 
 Note: cancelled reservations no longer display in the dashboard.
 
